@@ -1,7 +1,7 @@
 require 'data_mapper'
 
 module AccountBooks
-  DataMapper::Logger.new($stdout, :debug)
+  DataMapper::Logger.new($stdout, :info)
   DataMapper.setup(:default, 'sqlite::memory:')
 
   class Account
