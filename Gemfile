@@ -5,5 +5,6 @@ gem 'dm-sqlite-adapter'
 
 group :test do
   gem 'rake'
-  gem 'minitest'
+  gem 'minitest', '~>5'
+  gem 'minitest-reporters'
 end
