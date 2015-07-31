@@ -2,7 +2,8 @@ require 'data_mapper'
 
 module AccountBooks
   DataMapper::Logger.new($stdout, :info)
-  DataMapper.setup(:default, 'sqlite::memory:')
+  database = ENV['DB'] || "sqlite3://#{Dir.pwd}/account_books.db"
+  DataMapper.setup(:default, database)
 
   class Account
     include DataMapper::Resource
@@ -13,6 +14,5 @@ module AccountBooks
   end
 
   DataMapper.finalize
-  DataMapper.auto_migrate!
-  # DataMapper.auto_upgrade!
+  DataMapper.auto_upgrade!
 end
