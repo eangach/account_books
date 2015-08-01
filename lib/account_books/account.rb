@@ -7,5 +7,6 @@ module AccountBooks
     property :id, Serial
     property :name, String, required: true, unique: true
     property :created_at, DateTime
+    property :updated_at, DateTime
   end
 end
