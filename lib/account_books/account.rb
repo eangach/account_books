@@ -5,7 +5,7 @@ module AccountBooks
     include DataMapper::Resource
 
     property :id, Serial
-    property :name, String
+    property :name, String, required: true, unique: true
     property :created_at, DateTime
   end
 end

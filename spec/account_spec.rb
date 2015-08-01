@@ -12,5 +12,12 @@ module AccountBooks
       Account.create(name: 'Test Account Three')
       Account.count.must_equal 1
     end
+
+    it 'cannot have duplicate account names' do
+      Account.create(name: 'Test Account One')
+      Account.count.must_equal 1
+      Account.create(name: 'Test Account One')
+      Account.count.must_equal 1
+    end
   end
 end
