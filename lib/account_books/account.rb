@@ -13,5 +13,9 @@ module AccountBooks
     def self.find_by_name(name)
       first(name: name)
     end
+
+    def self.find_by_type(type)
+      all(type: type)
+    end
   end
 end

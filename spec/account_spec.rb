@@ -63,5 +63,19 @@ module AccountBooks
 
       Account.find_by_name('Test Account Two').name.must_equal 'Test Account Two'
     end
+
+    it 'finds by type' do
+      Account.count.must_equal 0
+      Account.create(name: 'Test Account One', type: :asset)
+      Account.create(name: 'Test Account Two', type: :liability)
+      Account.create(name: 'Test Account Three', type: :asset)
+      Account.count.must_equal 3
+
+      Account.find_by_type(:asset).count.must_equal 2
+      Account.find_by_type(:liability).count.must_equal 1
+
+      Account.find_by_type(:asset).each{|account| account.type.must_equal :asset}
+      Account.find_by_type(:liability).each{|account| account.type.must_equal :liability}
+    end
   end
 end
