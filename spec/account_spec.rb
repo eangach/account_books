@@ -53,5 +53,15 @@ module AccountBooks
       Account.create(name: 'Test other Account', type: :other)
       Account.count.must_equal 0
     end
+
+    it 'finds by name' do
+      Account.count.must_equal 0
+      %w{One Two Three}.each do |e|
+        Account.create(name: "Test Account #{e}", type: :asset)
+      end
+      Account.count.must_equal 3
+
+      Account.find_by_name('Test Account Two').name.must_equal 'Test Account Two'
+    end
   end
 end
