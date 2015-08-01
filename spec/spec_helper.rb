@@ -9,16 +9,4 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require 'account_books'
 
-require 'database_cleaner'
-
-DatabaseCleaner.strategy = :transaction
-
-class Minitest::Spec
-  before :each do
-    DatabaseCleaner.start
-  end
-
-  after :each do
-    DatabaseCleaner.clean
-  end
-end
+require_relative 'database_cleaner_helper'
