@@ -6,6 +6,7 @@ module AccountBooks
 
     property :id, Serial
     property :name, String, required: true, unique: true, index: true
+    property :type, Enum[ :asset, :liability, :equity, :revenue, :expense], required: true
     property :created_at, DateTime
     property :updated_at, DateTime
   end
