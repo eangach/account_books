@@ -29,6 +29,18 @@ module AccountBooks
       Account.count.must_equal 5
     end
 
+    it 'has the correct account type' do
+      Account.count.must_equal 0
+
+      %w{asset liability revenue expense equity}.each do |type|
+        Account.create(name: "Test #{type} Account", type: type)
+      end
+
+      %w{asset liability revenue expense equity}.each do |type|
+        Account.first(name: "Test #{type} Account").type.must_equal type.to_sym
+      end
+    end
+
     it 'cannot have account type other' do
       Account.count.must_equal 0
 
